@@ -4,6 +4,15 @@ from typing import List
 
 
 def bfs(graph: Matrix, start_vertex: int) -> List[int]:
+    """
+    The function traverses the graph in breadth and
+    calculates at which step which vertex is reachable.
+
+    :param graph: the graph is represented as an adjacency matrix.
+    :param start_vertex: the initial vertex of the graph
+    :return: returns a list with the numbers of steps at which the vertices are reachable,
+    the initial vertex is reachable at step 0, if the vertex is not reachable, -1 is returned
+    """
     if graph.type != BOOL:
         raise ValueError("Unsupported graph type. Expected type pygraphblas.BOOL")
     if not graph.square:
