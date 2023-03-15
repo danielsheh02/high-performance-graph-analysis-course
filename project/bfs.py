@@ -1,4 +1,5 @@
 from pygraphblas import Matrix, Vector
+from pygraphblas.descriptor import RSC
 from pygraphblas.types import BOOL, INT64
 from typing import List
 
@@ -26,11 +27,8 @@ def bfs(graph: Matrix, start_vertex: int) -> List[int]:
     front[start_vertex] = True
 
     step = 1
-    old_steps_nvals = -1
-    while old_steps_nvals != steps.nvals:
-        old_steps_nvals = steps.nvals
-        front.vxm(graph, out=front)
-        current_visited_mask = front.eadd(steps.S, add_op=BOOL.GT, mask=front.S)
-        steps.assign_scalar(step, mask=current_visited_mask)
+    while front.nvals != 0:
+        front.vxm(graph, out=front, mask=steps.S, desc=RSC)
+        steps.assign_scalar(step, mask=front)
         step += 1
     return [steps.get(i, -1) for i in range(steps.size)]
