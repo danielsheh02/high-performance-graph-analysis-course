@@ -14,6 +14,7 @@ from tests.utils import read_graphs_from_json
             data["start"],
             data["expected"],
         ),
+        "graphs_bfs.json",
     ),
 )
 def test_bfs(I, J, size, start_vertex, expected):
@@ -32,6 +33,7 @@ def test_bfs(I, J, size, start_vertex, expected):
             data["start"],
             [tuple(row) for row in data["expected"]],
         ),
+        "graphs_bfs.json",
     ),
 )
 def test_msbfs(I, J, size, start, expected):
