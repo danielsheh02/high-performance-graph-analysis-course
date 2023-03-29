@@ -7,6 +7,14 @@ from project.utils import is_undirected
 
 
 def count_triangles_for_each_vertex(graph: Matrix) -> List[int]:
+    """
+    The function calculates for each vertex of an
+    undirected graph the number of triangles in which it participates.
+
+    :param graph: the graph is represented as an adjacency matrix.
+    :return: returns a list where for each vertex it is indicated
+    how many triangles it participates in
+    """
     if graph.type != BOOL:
         raise ValueError("Unsupported graph type. Expected type pygraphblas.BOOL")
     if not graph.square:
@@ -20,6 +28,13 @@ def count_triangles_for_each_vertex(graph: Matrix) -> List[int]:
 
 
 def count_triangles_cohen(graph: Matrix) -> int:
+    """
+    The function calculates the number of triangles of an undirected graph
+    using Cohen's algorithm.
+
+    :param graph: the graph is represented as an adjacency matrix.
+    :return: returns the number of triangles in the graph
+    """
     if graph.type != BOOL:
         raise ValueError("Unsupported graph type. Expected type pygraphblas.BOOL")
     if not graph.square:
@@ -32,6 +47,13 @@ def count_triangles_cohen(graph: Matrix) -> int:
 
 
 def count_triangles_sandia(graph: Matrix) -> int:
+    """
+    The function calculates the number of triangles of an undirected graph
+    using Sandia algorithm.
+
+    :param graph: the graph is represented as an adjacency matrix.
+    :return: returns the number of triangles in the graph
+    """
     if graph.type != BOOL:
         raise ValueError("Unsupported graph type. Expected type pygraphblas.BOOL")
     if not graph.square:
